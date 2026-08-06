@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 
@@ -9,13 +10,30 @@ const notoSansJP = Noto_Sans_JP({
   weight: ["400", "500", "700", "900"],
 });
 
+const siteName = "期待値研究所";
+const description =
+  "勘ではなく、期待値で選ぶ。オリパ・カードBOX・ふるさと納税・くじ・競馬など「得する確率」が関わる選択を、数字で検証するリサーチメディア。";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kitaichi-research.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
-    default: "期待値研究所",
-    template: "%s｜期待値研究所",
+    default: siteName,
+    template: `%s｜${siteName}`,
   },
-  description:
-    "勘ではなく、期待値で選ぶ。オリパ・カードBOX・ふるさと納税・くじ・競馬など「得する確率」が関わる選択を、数字で検証するリサーチメディア。",
+  description,
+  openGraph: {
+    siteName,
+    description,
+    locale: "ja_JP",
+    type: "website",
+    images: ["/logo-horizontal.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    description,
+    images: ["/logo-horizontal.png"],
+  },
 };
 
 const navLinks = [
@@ -30,8 +48,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <header className="border-b border-ink/10">
           <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-            <Link href="/" className="text-lg font-bold tracking-tight">
-              期待値研究所
+            <Link href="/" className="flex items-center gap-2">
+              <Image src="/logo-horizontal.png" alt={siteName} width={160} height={40} priority className="h-8 w-auto" />
             </Link>
             <nav className="flex gap-6 text-sm">
               {navLinks.map((link) => (

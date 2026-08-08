@@ -16,6 +16,24 @@ export async function getItemsByCategory(category: KitaichiCategory): Promise<It
   return data ?? [];
 }
 
+export async function getRecentItemsByCategory(
+  category: KitaichiCategory,
+  limit = 6,
+): Promise<Item[]> {
+  if (!isSupabaseConfigured) return [];
+  const { data, error } = await supabase
+    .from("items")
+    .select("*")
+    .eq("category", category)
+    .order("verified_at", { ascending: false })
+    .limit(limit);
+  if (error) {
+    console.error("getRecentItemsByCategory failed", error);
+    return [];
+  }
+  return data ?? [];
+}
+
 export async function getItemBySlug(slug: string): Promise<Item | null> {
   if (!isSupabaseConfigured) return null;
   const { data, error } = await supabase.from("items").select("*").eq("slug", slug).single();

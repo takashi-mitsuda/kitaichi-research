@@ -48,7 +48,12 @@ export default async function OripaTopPage() {
 
       <section className="mt-12 grid gap-8 sm:grid-cols-2">
         <div>
-          <h2 className="text-xl font-bold">解説記事</h2>
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-xl font-bold">解説記事</h2>
+            <Link href="/oripa/report" className="text-sm">
+              すべて見る →
+            </Link>
+          </div>
           {reports.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">記事準備中です（microCMS接続後に表示されます）。</p>
           ) : (
@@ -62,7 +67,12 @@ export default async function OripaTopPage() {
           )}
         </div>
         <div>
-          <h2 className="text-xl font-bold">サイト評価</h2>
+          <div className="flex items-baseline justify-between">
+            <h2 className="text-xl font-bold">サイト評価</h2>
+            <Link href="/oripa/store" className="text-sm">
+              すべて見る →
+            </Link>
+          </div>
           {stores.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">評価記事準備中です（microCMS接続後に表示されます）。</p>
           ) : (

@@ -39,6 +39,8 @@ export const metadata: Metadata = {
 const navLinks = [
   { href: "/oripa", label: "オリパ研究部門" },
   { href: "/oripa/ranking", label: "還元率ランキング" },
+  { href: "/oripa/report", label: "解説記事" },
+  { href: "/oripa/store", label: "サイト評価" },
   { href: "/about", label: "研究所について" },
 ];
 
@@ -62,14 +64,44 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
         <main className="flex-1">{children}</main>
         <footer className="border-t border-ink/10 mt-16">
-          <div className="mx-auto flex max-w-4xl flex-col gap-2 px-6 py-8 text-sm text-ink/60">
-            <div className="flex flex-wrap gap-4">
-              <Link href="/about">研究所について</Link>
-              <Link href="/policy">免責事項・データ検証ポリシー</Link>
-              <Link href="/privacy">プライバシーポリシー</Link>
-              <Link href="/contact">お問い合わせ</Link>
+          <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/60">
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div>
+                <p className="font-bold text-ink">サイトマップ</p>
+                <ul className="mt-3 space-y-2">
+                  <li>
+                    <Link href="/oripa">オリパ研究部門</Link>
+                  </li>
+                  <li>
+                    <Link href="/oripa/ranking">還元率ランキング</Link>
+                  </li>
+                  <li>
+                    <Link href="/oripa/report">解説記事</Link>
+                  </li>
+                  <li>
+                    <Link href="/oripa/store">サイト評価</Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-bold text-ink">ポリシー</p>
+                <ul className="mt-3 space-y-2">
+                  <li>
+                    <Link href="/about">研究所について</Link>
+                  </li>
+                  <li>
+                    <Link href="/policy">免責事項・データ検証ポリシー</Link>
+                  </li>
+                  <li>
+                    <Link href="/privacy">プライバシーポリシー</Link>
+                  </li>
+                  <li>
+                    <Link href="/contact">お問い合わせ</Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <p>&copy; {new Date().getFullYear()} 期待値研究所</p>
+            <p className="mt-8">&copy; {new Date().getFullYear()} 期待値研究所</p>
           </div>
         </footer>
       </body>

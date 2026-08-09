@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -36,32 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
-const navLinks = [
-  { href: "/oripa", label: "オリパ研究部門" },
-  { href: "/oripa/ranking", label: "還元率ランキング" },
-  { href: "/oripa/report", label: "解説記事" },
-  { href: "/oripa/store", label: "サイト評価" },
-  { href: "/about", label: "研究所について" },
-];
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ja" className={`${notoSansJP.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <header className="border-b border-ink/10">
-          <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
-            <Link href="/" className="flex items-center gap-2">
-              <Image src="/logo-horizontal.png" alt={siteName} width={160} height={40} priority className="h-8 w-auto" />
-            </Link>
-            <nav className="flex gap-6 text-sm">
-              {navLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="text-ink hover:text-vermillion">
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </header>
+        <Header />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-ink/10 mt-16">
           <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/60">

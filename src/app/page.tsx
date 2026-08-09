@@ -69,26 +69,26 @@ export default async function Home() {
 
       <div className="mx-auto max-w-4xl px-6">
         <section className="mt-24 sm:mt-32">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-            <H2>換金ベース還元率ランキング TOP10</H2>
-            <Link href="/oripa/ranking" className="self-end text-sm sm:self-auto">
-              すべて見る →
-            </Link>
-          </div>
+          <H2>換金ベース還元率ランキング TOP10</H2>
           {topRanking.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
           ) : (
-            <ol className="mt-6 divide-y divide-ink/10">
-              {topRanking.map((item, index) => (
-                <li key={item.id} className="flex items-center justify-between py-3">
-                  <span className="flex items-center gap-3">
-                    <span className="w-6 text-ink/50">{index + 1}</span>
-                    <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
-                  </span>
-                  <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
-                </li>
-              ))}
-            </ol>
+            <>
+              <ol className="mt-6 divide-y divide-ink/10">
+                {topRanking.map((item, index) => (
+                  <li key={item.id} className="flex items-center justify-between py-3">
+                    <span className="flex items-center gap-3">
+                      <span className="w-6 text-ink/50">{index + 1}</span>
+                      <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
+                    </span>
+                    <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
+                  </li>
+                ))}
+              </ol>
+              <Link href="/oripa/ranking" className="mt-4 block text-right text-sm">
+                すべて見る →
+              </Link>
+            </>
           )}
         </section>
 
@@ -110,22 +110,22 @@ export default async function Home() {
         </section>
 
         <section className="mt-24 sm:mt-32">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-            <H2>サイト評価</H2>
-            <Link href="/oripa/store" className="self-end text-sm sm:self-auto">
-              すべて見る →
-            </Link>
-          </div>
+          <H2>サイト評価</H2>
           {stores.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">評価記事準備中です（microCMS接続後に表示されます）。</p>
           ) : (
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {stores.contents.map((store) => (
-                <Link key={store.id} href={`/oripa/store/${store.slug}`} className="border border-ink/10 p-4 font-bold">
-                  {store.name}
-                </Link>
-              ))}
-            </div>
+            <>
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                {stores.contents.map((store) => (
+                  <Link key={store.id} href={`/oripa/store/${store.slug}`} className="border border-ink/10 p-4 font-bold">
+                    {store.name}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/oripa/store" className="mt-4 block text-right text-sm">
+                すべて見る →
+              </Link>
+            </>
           )}
         </section>
 

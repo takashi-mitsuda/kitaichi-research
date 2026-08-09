@@ -25,66 +25,66 @@ export default async function OripaTopPage() {
       <p className="mt-3 text-ink/70">オリパの期待値を見るならここ。換金ベースの還元率で、数字だけを見て選べます。</p>
 
       <section className="mt-16">
-        <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-          <H2>換金ベース還元率ランキング TOP10</H2>
-          <Link href="/oripa/ranking" className="self-end text-sm sm:self-auto">
-            すべて見る →
-          </Link>
-        </div>
+        <H2>換金ベース還元率ランキング TOP10</H2>
         {topRanking.length === 0 ? (
           <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
         ) : (
-          <ol className="mt-4 divide-y divide-ink/10">
-            {topRanking.map((item, index) => (
-              <li key={item.id} className="flex items-center justify-between py-3">
-                <span className="flex items-center gap-3">
-                  <span className="w-6 text-ink/50">{index + 1}</span>
-                  <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
-                </span>
-                <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
-              </li>
-            ))}
-          </ol>
+          <>
+            <ol className="mt-4 divide-y divide-ink/10">
+              {topRanking.map((item, index) => (
+                <li key={item.id} className="flex items-center justify-between py-3">
+                  <span className="flex items-center gap-3">
+                    <span className="w-6 text-ink/50">{index + 1}</span>
+                    <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
+                  </span>
+                  <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
+                </li>
+              ))}
+            </ol>
+            <Link href="/oripa/ranking" className="mt-4 block text-right text-sm">
+              すべて見る →
+            </Link>
+          </>
         )}
       </section>
 
       <section className="mt-16 grid gap-8 sm:grid-cols-2">
         <div>
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-            <H2>解説記事</H2>
-            <Link href="/oripa/report" className="self-end text-sm sm:self-auto">
-              すべて見る →
-            </Link>
-          </div>
+          <H2>解説記事</H2>
           {reports.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">記事準備中です（microCMS接続後に表示されます）。</p>
           ) : (
-            <ul className="mt-4 space-y-2">
-              {reports.contents.map((report) => (
-                <li key={report.id}>
-                  <Link href={`/oripa/report/${report.slug}`}>{report.title}</Link>
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className="mt-4 space-y-2">
+                {reports.contents.map((report) => (
+                  <li key={report.id}>
+                    <Link href={`/oripa/report/${report.slug}`}>{report.title}</Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/oripa/report" className="mt-4 block text-right text-sm">
+                すべて見る →
+              </Link>
+            </>
           )}
         </div>
         <div>
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-            <H2>サイト評価</H2>
-            <Link href="/oripa/store" className="self-end text-sm sm:self-auto">
-              すべて見る →
-            </Link>
-          </div>
+          <H2>サイト評価</H2>
           {stores.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">評価記事準備中です（microCMS接続後に表示されます）。</p>
           ) : (
-            <ul className="mt-4 space-y-2">
-              {stores.contents.map((store) => (
-                <li key={store.id}>
-                  <Link href={`/oripa/store/${store.slug}`}>{store.name}</Link>
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className="mt-4 space-y-2">
+                {stores.contents.map((store) => (
+                  <li key={store.id}>
+                    <Link href={`/oripa/store/${store.slug}`}>{store.name}</Link>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/oripa/store" className="mt-4 block text-right text-sm">
+                すべて見る →
+              </Link>
+            </>
           )}
         </div>
       </section>

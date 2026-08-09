@@ -1,6 +1,8 @@
 # 期待値研究所 (kitaichi-research.com)
 
-Next.js + microCMS + Supabase + Vercelで構築するメディアサイト。設計・移行の経緯は親ディレクトリの[`../README.md`](../README.md)と[`../18-migration-to-vercel.md`](../18-migration-to-vercel.md)を参照。
+Next.js + microCMS + Supabase + Vercelで構築するメディアサイト。設計・移行の経緯や記事下書き・残タスクは別リポジトリ [kitaichi-research-docs](https://github.com/takashi-mitsuda/kitaichi-research-docs)（Private）にまとめている。
+
+別マシンでセットアップする場合は、このリポジトリと`kitaichi-research-docs`を同じ親ディレクトリ（例：`Kitaichi-Research/app/`と`Kitaichi-Research/`）に並べてcloneすると、ドキュメント間の相対リンク（`../README.md`等）がそのまま機能する。
 
 ## セットアップ
 

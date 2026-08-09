@@ -39,3 +39,34 @@ a {
 .animate-fade-up {
   animation: fade-up 0.7s ease both;
 }
+
+/* トップページのヒーロー背景:計算メモ風に数字・記号がごく淡く上へ流れる演出 */
+@keyframes drift-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12%,
+  82% {
+    opacity: var(--drift-opacity, 0.07);
+  }
+  100% {
+    transform: translateY(-130%);
+    opacity: 0;
+  }
+}
+
+.hero-drift {
+  animation-name: drift-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  white-space: nowrap;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift {
+    animation: none;
+    opacity: 0;
+  }
+}

@@ -40,50 +40,95 @@ a {
   animation: fade-up 0.7s ease both;
 }
 
-/* トップページのヒーロー背景:方眼紙・検証用紙の罫線のような横線が濃淡を変えながら左右に流れる演出 */
-@keyframes drift-x {
-  0% {
-    transform: translateX(-60vw);
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: var(--drift-opacity, 0.07);
-  }
-  100% {
-    transform: translateX(60vw);
-    opacity: 0;
-  }
-}
-
-@keyframes drift-x-reverse {
-  0% {
-    transform: translateX(60vw);
-    opacity: 0;
-  }
-  15%,
-  85% {
-    opacity: var(--drift-opacity, 0.07);
-  }
-  100% {
-    transform: translateX(-60vw);
-    opacity: 0;
-  }
-}
-
-.hero-line {
-  animation-name: drift-x;
-  animation-timing-function: linear;
+/* トップページのヒーロー背景:「墨のにじみ」+ 検証済み最高還元率が0からカウントアップする巨大な数字。
+   位置はセクション縦の38%を基準にする(中央だと本文が短いモバイルで浮いて見えたため、やや上寄せ)。
+   mix-blend-mode(ブレンドモード)は一部モバイルブラウザで消えるため使わず、rgba単体で"にじみ"を表現する。 */
+.hero-ink-blob {
+  position: absolute;
+  border-radius: 50%;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  animation-direction: alternate;
+  will-change: transform;
 }
 
-.hero-line-reverse {
-  animation-name: drift-x-reverse;
+.hero-ink-blob-1 {
+  width: 70vw;
+  height: 70vw;
+  max-width: 640px;
+  max-height: 640px;
+  top: -18%;
+  left: -16%;
+  background: radial-gradient(
+    circle at 42% 42%,
+    rgba(23, 24, 28, 0.16),
+    rgba(23, 24, 28, 0.07) 45%,
+    rgba(23, 24, 28, 0) 72%
+  );
+  animation-name: hero-blob-drift;
+  animation-duration: 22s;
+}
+
+.hero-ink-blob-2 {
+  width: 54vw;
+  height: 54vw;
+  max-width: 480px;
+  max-height: 480px;
+  top: 38%;
+  right: -12%;
+  transform: translateY(-50%);
+  background: radial-gradient(
+    circle at 58% 58%,
+    rgba(194, 55, 31, 0.14),
+    rgba(194, 55, 31, 0.05) 45%,
+    rgba(194, 55, 31, 0) 72%
+  );
+  animation-name: hero-blob-drift-centered;
+  animation-duration: 27s;
+  animation-delay: -6s;
+}
+
+@keyframes hero-blob-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(3%, 4%) scale(1.08);
+  }
+  100% {
+    transform: translate(-2%, -3%) scale(0.97);
+  }
+}
+
+@keyframes hero-blob-drift-centered {
+  0% {
+    transform: translateY(-50%) translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translateY(-50%) translate(3%, 4%) scale(1.08);
+  }
+  100% {
+    transform: translateY(-50%) translate(-2%, -3%) scale(0.97);
+  }
+}
+
+.hero-giant-stat {
+  position: absolute;
+  top: 38%;
+  right: -3%;
+  transform: translateY(-50%);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: clamp(6rem, 28vw, 20rem);
+  line-height: 1;
+  color: var(--color-ink);
+  opacity: 0.08;
+  white-space: nowrap;
+  user-select: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-line {
+  .hero-ink-blob {
     animation: none;
-    opacity: 0;
   }
 }

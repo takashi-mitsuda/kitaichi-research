@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <div className="mx-auto max-w-4xl px-6">
       <section className="relative overflow-hidden py-24 sm:py-32">
-        <HeroBackground />
+        <HeroBackground targetRate={topItem?.return_rate} />
         <div className="relative z-10 max-w-2xl">
           <div className="animate-fade-up">
             <Eyebrow>KITAICHI RESEARCH</Eyebrow>

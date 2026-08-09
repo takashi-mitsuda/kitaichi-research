@@ -1,42 +1,61 @@
-// トップページのヒーロー背景。方眼紙・検証用紙の罫線のような細い横線が、
-// 濃淡を変えながらゆっくり左右に流れる。translateXをvw単位で動かすため、
-// 画面幅に関わらず安定して見える(数字ドリフト版でモバイル表示が崩れたための差し替え)。
-const LINES: Array<{
-  top: string;
-  width: string;
-  duration: string;
-  delay: string;
-  opacity: number;
-  reverse?: boolean;
-}> = [
-  { top: "8%", width: "28%", duration: "26s", delay: "0s", opacity: 0.07 },
-  { top: "16%", width: "45%", duration: "32s", delay: "4s", opacity: 0.05, reverse: true },
-  { top: "24%", width: "18%", duration: "22s", delay: "9s", opacity: 0.09 },
-  { top: "33%", width: "38%", duration: "29s", delay: "2s", opacity: 0.06, reverse: true },
-  { top: "42%", width: "24%", duration: "24s", delay: "13s", opacity: 0.08 },
-  { top: "51%", width: "50%", duration: "34s", delay: "6s", opacity: 0.05, reverse: true },
-  { top: "60%", width: "20%", duration: "21s", delay: "11s", opacity: 0.08 },
-  { top: "69%", width: "33%", duration: "27s", delay: "1s", opacity: 0.06, reverse: true },
-  { top: "78%", width: "22%", duration: "23s", delay: "8s", opacity: 0.07 },
-  { top: "87%", width: "40%", duration: "30s", delay: "15s", opacity: 0.05, reverse: true },
-];
+"use client";
 
-export function HeroBackground() {
+import { useEffect, useRef } from "react";
+
+// トップページのヒーロー背景。「墨のにじみ」(ink-blob)と、実際の検証済み最高還元率が
+// 0からゆっくりカウントアップする巨大な数字(giant-stat)を組み合わせる。
+// プレビューで比較した3案(ハイライト/墨のにじみ/巨大数字)のうち、
+// 墨のにじみ+巨大数字の組み合わせを採用した(2026-08-09)。
+export function HeroBackground({ targetRate }: { targetRate?: number }) {
+  const statRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = statRef.current;
+    if (!el || !targetRate) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      el.textContent = `${targetRate.toFixed(1)}%`;
+      return;
+    }
+
+    const DURATION = 3200;
+    const HOLD = 2600;
+    const PAUSE = 1600;
+    let start: number | null = null;
+    let frameId: number;
+
+    function frame(ts: number) {
+      if (start === null) start = ts;
+      const elapsed = ts - start;
+      if (!el || !targetRate) return;
+      if (elapsed <= DURATION) {
+        const t = elapsed / DURATION;
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = `${(eased * targetRate).toFixed(1)}%`;
+      } else if (elapsed <= DURATION + HOLD) {
+        el.textContent = `${targetRate.toFixed(1)}%`;
+      } else if (elapsed <= DURATION + HOLD + PAUSE) {
+        el.textContent = "0.0%";
+      } else {
+        start = ts;
+      }
+      frameId = requestAnimationFrame(frame);
+    }
+    frameId = requestAnimationFrame(frame);
+
+    return () => cancelAnimationFrame(frameId);
+  }, [targetRate]);
+
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      {LINES.map((line, index) => (
-        <span
-          key={index}
-          className={`hero-line absolute h-px bg-ink ${line.reverse ? "hero-line-reverse" : ""}`}
-          style={{
-            top: line.top,
-            width: line.width,
-            animationDuration: line.duration,
-            animationDelay: line.delay,
-            ["--drift-opacity" as string]: line.opacity,
-          }}
-        />
-      ))}
+      <div className="hero-ink-blob hero-ink-blob-1" />
+      <div className="hero-ink-blob hero-ink-blob-2" />
+      {targetRate ? (
+        <div ref={statRef} className="hero-giant-stat">
+          0.0%
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getItemsByCategory, getRecentItemsByCategory } from "@/lib/items";
 import { getReports, getStores } from "@/lib/microcms";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 
 export const revalidate = 3600;
 
@@ -43,12 +45,9 @@ export default async function Home() {
           </p>
         )}
 
-        <Link
-          href="/oripa"
-          className="mt-8 inline-block rounded bg-ink px-6 py-3 font-bold text-paper"
-        >
-          オリパ研究部門を見る
-        </Link>
+        <div className="mt-8">
+          <Button href="/oripa">オリパ研究部門を見る</Button>
+        </div>
       </section>
 
       <section className="mt-20">

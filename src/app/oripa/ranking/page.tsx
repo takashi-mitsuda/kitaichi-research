@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getItemsByCategory } from "@/lib/items";
+import { Table } from "@/components/ui/Table";
 
 export const metadata: Metadata = {
   title: "オリパ換金ベース還元率ランキング",
@@ -24,7 +25,7 @@ export default async function OripaRankingPage() {
       {items.length === 0 ? (
         <p className="mt-8 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
       ) : (
-        <table className="mt-8 w-full text-sm">
+        <Table className="mt-8">
           <thead>
             <tr className="border-b border-ink/20 text-left">
               <th className="py-2">順位</th>
@@ -47,7 +48,7 @@ export default async function OripaRankingPage() {
               </tr>
             ))}
           </tbody>
-        </table>
+        </Table>
       )}
     </div>
   );

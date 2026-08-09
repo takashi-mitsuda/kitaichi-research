@@ -10,8 +10,8 @@ export default async function Home() {
   const [items, recentItems, reports, stores] = await Promise.all([
     getItemsByCategory("oripa"),
     getRecentItemsByCategory("oripa", 6),
-    getReports({ filters: "category[equals]oripa", limit: 1 }),
-    getStores({ filters: "category[equals]oripa", limit: 3 }),
+    getReports({ filters: "category[contains]oripa", limit: 1 }),
+    getStores({ filters: "category[contains]oripa", limit: 3 }),
   ]);
 
   const topItem = items[0];

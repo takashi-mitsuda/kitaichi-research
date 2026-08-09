@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export const revalidate = 3600;
 
 export default async function ReportListPage() {
-  const reports = await getReports({ filters: "category[equals]oripa", limit: 100 });
+  const reports = await getReports({ filters: "category[contains]oripa", limit: 100 });
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">

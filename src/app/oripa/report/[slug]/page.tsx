@@ -4,7 +4,7 @@ import { getReportBySlug, getReports } from "@/lib/microcms";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const { contents } = await getReports({ limit: 100, filters: "category[equals]oripa" });
+  const { contents } = await getReports({ limit: 100, filters: "category[contains]oripa" });
   return contents.map((report) => ({ slug: report.slug }));
 }
 

@@ -31,12 +31,14 @@ export type Report = MicroCmsContent & {
   title: string;
   slug: string;
   body: string;
-  category: KitaichiCategory;
+  // microCMSのセレクトフィールドは複数選択形式のため配列で返る
+  category: KitaichiCategory[];
 };
 
 export type Store = MicroCmsContent & {
   name: string;
   slug: string;
   review: string;
-  category: KitaichiCategory;
+  // microCMSのセレクトフィールドは複数選択形式のため配列で返る
+  category: KitaichiCategory[];
 };

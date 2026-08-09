@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default async function OripaTopPage() {
   const [items, reports, stores] = await Promise.all([
     getItemsByCategory("oripa"),
-    getReports({ filters: "category[equals]oripa", limit: 6 }),
-    getStores({ filters: "category[equals]oripa", limit: 6 }),
+    getReports({ filters: "category[contains]oripa", limit: 6 }),
+    getStores({ filters: "category[contains]oripa", limit: 6 }),
   ]);
 
   const topRanking = items.slice(0, 10);

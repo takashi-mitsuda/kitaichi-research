@@ -18,10 +18,17 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-ink/10">
-      <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-4">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper/75 backdrop-blur-md backdrop-saturate-150">
+      <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3 md:py-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <Image src="/logo-horizontal.png" alt={siteName} width={160} height={40} priority className="h-8 w-auto" />
+          <Image
+            src="/logo-horizontal.png"
+            alt={siteName}
+            width={220}
+            height={56}
+            priority
+            className="h-8 w-auto md:h-12"
+          />
         </Link>
 
         {/* デスクトップ用ナビ(md以上で表示) */}

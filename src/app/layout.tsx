@@ -41,7 +41,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="ja" className={`${notoSansJP.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <Header />
-        <main className="flex-1">{children}</main>
+        {/* ヘッダーがfixed化したため、その高さ分だけ本文を下げる(ヘッダー実測高:モバイル約57px/md以上約81px) */}
+        <main className="flex-1 pt-16 md:pt-20">{children}</main>
         <footer className="border-t border-ink/10 mt-16">
           <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/50">
             <div className="grid gap-8 sm:grid-cols-2">

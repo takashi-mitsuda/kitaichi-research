@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getItemsByCategory } from "@/lib/items";
 import { Table } from "@/components/ui/Table";
+import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "オリパ換金ベース還元率ランキング",
@@ -15,7 +16,7 @@ export default async function OripaRankingPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="text-2xl font-bold">オリパ 換金ベース還元率ランキング</h1>
+      <H1>オリパ 換金ベース還元率ランキング</H1>
       <p className="mt-3 text-sm text-ink/70">
         運営側が提示する表示価格ではなく、実際の買取・換金価値（cash_value）を基準に算出した還元率のランキングです。算出方法は
         <Link href="/policy">免責事項・データ検証ポリシー</Link>

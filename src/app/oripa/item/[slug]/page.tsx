@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { getItemBySlug } from "@/lib/items";
+import { H1 } from "@/components/ui/Heading";
 
 export const revalidate = 3600;
 
@@ -34,7 +35,7 @@ export default async function ItemPage(props: PageProps<"/oripa/item/[slug]">) {
 
   return (
     <article className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">{item.item_name}</h1>
+      <H1>{item.item_name}</H1>
       <p className="mt-2 text-sm text-ink/60">期待値・還元率は換金ベースで算出しています。詳細は<Link href="/policy">データ検証ポリシー</Link>参照。</p>
 
       <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10">

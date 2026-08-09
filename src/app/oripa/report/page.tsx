@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getReports } from "@/lib/microcms";
+import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "解説記事一覧",
@@ -14,7 +15,7 @@ export default async function ReportListPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">解説記事一覧</h1>
+      <H1>解説記事一覧</H1>
       <p className="mt-3 text-sm text-ink/70">
         期待値・還元率の考え方や算出方法を解説するピラー記事です。
       </p>

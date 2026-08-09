@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getStores } from "@/lib/microcms";
+import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "サイト評価一覧",
@@ -14,7 +15,7 @@ export default async function StoreListPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">サイト評価一覧</h1>
+      <H1>サイト評価一覧</H1>
       <p className="mt-3 text-sm text-ink/70">
         オリパ運営会社・プラットフォーム単位の評価記事です。
       </p>

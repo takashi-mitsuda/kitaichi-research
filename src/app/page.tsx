@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getItemsByCategory, getRecentItemsByCategory } from "@/lib/items";
 import { getReports, getStores } from "@/lib/microcms";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
+import { Eyebrow, HeroHeading, H2 } from "@/components/ui/Heading";
 
 export const revalidate = 3600;
 
@@ -19,40 +19,52 @@ export default async function Home() {
   const pillarReport = reports.contents[0];
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
-      <section className="max-w-2xl">
-        <h1 className="text-3xl font-bold leading-tight sm:text-4xl">
-          勘ではなく、
-          <br />
-          期待値で選ぶ。
-        </h1>
-        <p className="mt-6 leading-relaxed text-ink/70">
-          オリパ・カードBOX・ふるさと納税・くじ・競馬など、「得する確率」が関わる選択を、数字で検証するリサーチメディアです。
-          表示価格ではなく、実際に買取・換金した場合の価値（換金ベース）を基準に期待値・還元率を算出しています。
-        </p>
-
-        {topItem ? (
-          <p className="mt-8 border-y border-ink/10 py-4 text-sm">
-            現在の最高還元率：
-            <Link href={`/oripa/item/${topItem.slug}`} className="font-bold text-vermillion">
-              {topItem.item_name} {topItem.return_rate.toFixed(1)}%
-            </Link>
-            （換金ベース）
+    <div className="mx-auto max-w-4xl px-6">
+      <section className="py-24 sm:py-32">
+        <div className="max-w-2xl">
+          <div className="animate-fade-up">
+            <Eyebrow>KITAICHI RESEARCH</Eyebrow>
+          </div>
+          <div className="animate-fade-up mt-4" style={{ animationDelay: "0.08s" }}>
+            <HeroHeading>
+              勘ではなく、
+              <br />
+              期待値で選ぶ。
+            </HeroHeading>
+          </div>
+          <p
+            className="animate-fade-up mt-6 leading-relaxed text-ink/70"
+            style={{ animationDelay: "0.16s" }}
+          >
+            オリパ・カードBOX・ふるさと納税・くじ・競馬など、「得する確率」が関わる選択を、数字で検証するリサーチメディアです。
+            表示価格ではなく、実際に買取・換金した場合の価値（換金ベース）を基準に期待値・還元率を算出しています。
           </p>
-        ) : (
-          <p className="mt-8 border-y border-ink/10 py-4 text-sm text-ink/50">
-            データ準備中です（Supabase接続後、検証済みの還元率がここに表示されます）。
-          </p>
-        )}
 
-        <div className="mt-8">
-          <Button href="/oripa">オリパ研究部門を見る</Button>
+          <div className="animate-fade-up" style={{ animationDelay: "0.24s" }}>
+            {topItem ? (
+              <p className="mt-8 border-y border-ink/10 py-4 text-sm">
+                現在の最高還元率：
+                <Link href={`/oripa/item/${topItem.slug}`} className="font-bold text-vermillion">
+                  {topItem.item_name} {topItem.return_rate.toFixed(1)}%
+                </Link>
+                （換金ベース）
+              </p>
+            ) : (
+              <p className="mt-8 border-y border-ink/10 py-4 text-sm text-ink/50">
+                データ準備中です（Supabase接続後、検証済みの還元率がここに表示されます）。
+              </p>
+            )}
+          </div>
+
+          <div className="animate-fade-up mt-8" style={{ animationDelay: "0.32s" }}>
+            <Button href="/oripa">オリパ研究部門を見る</Button>
+          </div>
         </div>
       </section>
 
-      <section className="mt-20">
+      <section className="mt-24 sm:mt-32">
         <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-bold">換金ベース還元率ランキング TOP10</h2>
+          <H2>換金ベース還元率ランキング TOP10</H2>
           <Link href="/oripa/ranking" className="text-sm">
             すべて見る →
           </Link>
@@ -60,7 +72,7 @@ export default async function Home() {
         {topRanking.length === 0 ? (
           <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
         ) : (
-          <ol className="mt-4 divide-y divide-ink/10">
+          <ol className="mt-6 divide-y divide-ink/10">
             {topRanking.map((item, index) => (
               <li key={item.id} className="flex items-center justify-between py-3">
                 <span className="flex items-center gap-3">
@@ -74,9 +86,9 @@ export default async function Home() {
         )}
       </section>
 
-      <section className="mt-20 max-w-2xl">
-        <h2 className="text-xl font-bold">なぜ期待値研究所か</h2>
-        <div className="mt-4 space-y-4 leading-relaxed text-ink/80">
+      <section className="mt-24 max-w-2xl sm:mt-32">
+        <H2>なぜ期待値研究所か</H2>
+        <div className="mt-6 space-y-4 leading-relaxed text-ink/80">
           <p>
             多くのオリパ比較サイトは、運営側が提示する表示価格をそのまま還元率の計算に使っています。当研究所では、実際に買取・換金した場合の価値（換金ベース）を基準に算出し、損な商品も正直に「損」と書きます。
           </p>
@@ -91,9 +103,9 @@ export default async function Home() {
         )}
       </section>
 
-      <section className="mt-20">
+      <section className="mt-24 sm:mt-32">
         <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-bold">サイト評価</h2>
+          <H2>サイト評価</H2>
           <Link href="/oripa/store" className="text-sm">
             すべて見る →
           </Link>
@@ -101,7 +113,7 @@ export default async function Home() {
         {stores.contents.length === 0 ? (
           <p className="mt-4 text-sm text-ink/50">評価記事準備中です（microCMS接続後に表示されます）。</p>
         ) : (
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {stores.contents.map((store) => (
               <Link key={store.id} href={`/oripa/store/${store.slug}`} className="border border-ink/10 p-4 font-bold">
                 {store.name}
@@ -111,12 +123,12 @@ export default async function Home() {
         )}
       </section>
 
-      <section className="mt-20">
-        <h2 className="text-xl font-bold">個別ガチャEV 新着</h2>
+      <section className="mt-24 sm:mt-32">
+        <H2>個別ガチャEV 新着</H2>
         {recentItems.length === 0 ? (
           <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
         ) : (
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {recentItems.map((item) => (
               <Link key={item.id} href={`/oripa/item/${item.slug}`} className="border border-ink/10 p-4">
                 <p className="font-bold">{item.item_name}</p>
@@ -128,11 +140,11 @@ export default async function Home() {
         )}
       </section>
 
-      <p className="mt-20 text-sm text-ink/50">
+      <p className="mt-24 text-sm text-ink/50 sm:mt-32">
         オリパ研究部門を皮切りに、カードBOX・ふるさと納税・くじ・競馬など他ジャンルへの展開も準備中です。
       </p>
 
-      <section className="mt-8 grid gap-4 border-t border-ink/10 pt-8 sm:grid-cols-2">
+      <section className="mt-8 grid gap-4 border-t border-ink/10 pb-24 pt-8 sm:grid-cols-2 sm:pb-32">
         <Link href="/about" className="border border-ink/10 p-6">
           <p className="font-bold">研究所について</p>
           <p className="mt-2 text-sm text-ink/60">運営体制・検証への取り組み方</p>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import { getStoreBySlug, getStores } from "@/lib/microcms";
+import { H1 } from "@/components/ui/Heading";
 
 export const revalidate = 3600;
 
@@ -23,7 +24,7 @@ export default async function StorePage(props: PageProps<"/oripa/store/[slug]">)
 
   return (
     <article className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">{store.name}</h1>
+      <H1>{store.name}</H1>
       <div className="prose prose-neutral mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: store.review }} />
       {/* 本文中にX(Twitter)の当選報告埋め込み(blockquote)があればレンダリングする */}
       <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />

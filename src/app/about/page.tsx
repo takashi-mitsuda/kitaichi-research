@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { H1, H2 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "研究所について",
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">期待値研究所について</h1>
+      <H1>期待値研究所について</H1>
 
       <section className="mt-10 space-y-4 leading-relaxed">
-        <h2 className="text-lg font-bold">期待値研究所とは</h2>
+        <H2>期待値研究所とは</H2>
         <p className="font-medium text-vermillion">「勘ではなく、期待値で選ぶ。」</p>
         <p>
           期待値研究所は、オリパ（オンラインくじ・トレーディングカードのオリジナルパック）をはじめ、カードBOX、ふるさと納税、くじ、競馬など、「得する確率」が関わるあらゆる選択を、数字で検証する研究機関です。
@@ -22,7 +23,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-10 space-y-4 leading-relaxed">
-        <h2 className="text-lg font-bold">検証への取り組み方</h2>
+        <H2>検証への取り組み方</H2>
         <p>当研究所が扱う数値には、次の3つの原則があります。</p>
         <div>
           <p className="font-bold">換金ベースで算出する</p>
@@ -39,7 +40,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-10 space-y-4 leading-relaxed">
-        <h2 className="text-lg font-bold">運営者について</h2>
+        <H2>運営者について</H2>
         <p>
           期待値研究所は、個人ではなく「期待値研究所」という組織名で運営しています。誌面には研究員キャラクター「キタイチ」（「期待値」の読みそのものが名前の由来です）が案内役として登場します。
         </p>
@@ -47,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-10 leading-relaxed">
-        <h2 className="text-lg font-bold">お問い合わせ</h2>
+        <H2>お問い合わせ</H2>
         <p>
           データの誤りのご指摘、掲載のご依頼などは、
           <Link href="/contact">お問い合わせページ</Link>

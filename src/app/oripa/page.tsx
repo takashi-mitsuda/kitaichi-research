@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getItemsByCategory } from "@/lib/items";
 import { getReports, getStores } from "@/lib/microcms";
+import { H1, H2 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "オリパ研究部門",
@@ -19,12 +20,12 @@ export default async function OripaTopPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-6 py-16">
-      <h1 className="text-3xl font-bold">オリパ研究部門</h1>
+      <H1>オリパ研究部門</H1>
       <p className="mt-3 text-ink/70">オリパの期待値を見るならここ。換金ベースの還元率で、数字だけを見て選べます。</p>
 
-      <section className="mt-12">
+      <section className="mt-16">
         <div className="flex items-baseline justify-between">
-          <h2 className="text-xl font-bold">換金ベース還元率ランキング TOP10</h2>
+          <H2>換金ベース還元率ランキング TOP10</H2>
           <Link href="/oripa/ranking" className="text-sm">
             すべて見る →
           </Link>
@@ -46,10 +47,10 @@ export default async function OripaTopPage() {
         )}
       </section>
 
-      <section className="mt-12 grid gap-8 sm:grid-cols-2">
+      <section className="mt-16 grid gap-8 sm:grid-cols-2">
         <div>
           <div className="flex items-baseline justify-between">
-            <h2 className="text-xl font-bold">解説記事</h2>
+            <H2>解説記事</H2>
             <Link href="/oripa/report" className="text-sm">
               すべて見る →
             </Link>
@@ -68,7 +69,7 @@ export default async function OripaTopPage() {
         </div>
         <div>
           <div className="flex items-baseline justify-between">
-            <h2 className="text-xl font-bold">サイト評価</h2>
+            <H2>サイト評価</H2>
             <Link href="/oripa/store" className="text-sm">
               すべて見る →
             </Link>

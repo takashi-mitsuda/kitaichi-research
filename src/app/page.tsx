@@ -71,7 +71,7 @@ export default async function Home() {
         <section className="mt-24 sm:mt-32">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <H2>換金ベース還元率ランキング TOP10</H2>
-            <Link href="/oripa/ranking" className="text-sm">
+            <Link href="/oripa/ranking" className="self-end text-sm sm:self-auto">
               すべて見る →
             </Link>
           </div>
@@ -112,7 +112,7 @@ export default async function Home() {
         <section className="mt-24 sm:mt-32">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <H2>サイト評価</H2>
-            <Link href="/oripa/store" className="text-sm">
+            <Link href="/oripa/store" className="self-end text-sm sm:self-auto">
               すべて見る →
             </Link>
           </div>

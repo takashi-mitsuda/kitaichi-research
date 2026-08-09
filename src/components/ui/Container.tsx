@@ -7,12 +7,14 @@ const sizeClass = {
 
 export function Container({
   size = "article",
+  as: Tag = "div",
   className = "",
   children,
 }: {
   size?: keyof typeof sizeClass;
+  as?: "div" | "article";
   className?: string;
   children: ReactNode;
 }) {
-  return <div className={`mx-auto ${sizeClass[size]} px-6 py-16 ${className}`}>{children}</div>;
+  return <Tag className={`mx-auto ${sizeClass[size]} px-6 py-16 ${className}`}>{children}</Tag>;
 }

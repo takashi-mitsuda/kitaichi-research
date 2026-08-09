@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { getReportBySlug, getReports } from "@/lib/microcms";
+import { Container } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Heading";
 
 export const revalidate = 3600;
@@ -22,9 +23,9 @@ export default async function ReportPage(props: PageProps<"/oripa/report/[slug]"
   if (!report) notFound();
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-16">
+    <Container as="article">
       <H1>{report.title}</H1>
       <div className="prose prose-neutral mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: report.body }} />
-    </article>
+    </Container>
   );
 }

@@ -43,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-ink/10 mt-16">
-          <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/60">
+          <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/50">
             <div className="grid gap-8 sm:grid-cols-2">
               <div>
                 <p className="font-bold text-ink">サイトマップ</p>

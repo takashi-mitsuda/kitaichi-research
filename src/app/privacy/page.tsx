@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Container } from "@/components/ui/Container";
+import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
@@ -7,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">プライバシーポリシー</h1>
+    <Container>
+      <H1>プライバシーポリシー</H1>
 
       <p className="mt-8 leading-relaxed">
         期待値研究所（以下「当サイト」といいます）は、ユーザーの個人情報の取り扱いについて、以下のとおりプライバシーポリシーを定めます。
@@ -73,11 +75,11 @@ export default function PrivacyPage() {
         </p>
       </section>
 
-      <p className="mt-10 text-sm text-ink/60">
+      <p className="mt-10 text-sm text-ink/50">
         制定日：2026年7月15日
         <br />
         最終更新日：2026年7月15日
       </p>
-    </div>
+    </Container>
   );
 }

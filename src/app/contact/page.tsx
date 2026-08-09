@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-xl px-6 py-16">
       <h1 className="text-2xl font-bold">お問い合わせ</h1>
-      <p className="mt-4 leading-relaxed text-ink/80">
+      <p className="mt-4 leading-relaxed text-ink/70">
         データの誤りのご指摘、掲載のご依頼などは、以下のフォームからご連絡ください。
       </p>
       <div className="mt-8">

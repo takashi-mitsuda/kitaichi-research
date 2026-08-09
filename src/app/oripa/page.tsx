@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getItemsByCategory } from "@/lib/items";
 import { getReports, getStores } from "@/lib/microcms";
+import { Container } from "@/components/ui/Container";
 import { H1, H2 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default async function OripaTopPage() {
   const topRanking = items.slice(0, 10);
 
   return (
-    <div className="mx-auto max-w-4xl px-6 py-16">
+    <Container size="wide">
       <H1>オリパ研究部門</H1>
       <p className="mt-3 text-ink/70">オリパの期待値を見るならここ。換金ベースの還元率で、数字だけを見て選べます。</p>
 
@@ -37,7 +38,7 @@ export default async function OripaTopPage() {
             {topRanking.map((item, index) => (
               <li key={item.id} className="flex items-center justify-between py-3">
                 <span className="flex items-center gap-3">
-                  <span className="w-6 text-ink/40">{index + 1}</span>
+                  <span className="w-6 text-ink/50">{index + 1}</span>
                   <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
                 </span>
                 <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
@@ -87,6 +88,6 @@ export default async function OripaTopPage() {
           )}
         </div>
       </section>
-    </div>
+    </Container>
   );
 }

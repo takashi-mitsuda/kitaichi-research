@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Container } from "@/components/ui/Container";
 import { H1, H2 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
+    <Container>
       <H1>期待値研究所について</H1>
 
       <section className="mt-10 space-y-4 leading-relaxed">
@@ -55,6 +56,6 @@ export default function AboutPage() {
           からご連絡ください。
         </p>
       </section>
-    </div>
+    </Container>
   );
 }

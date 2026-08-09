@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getStores } from "@/lib/microcms";
+import { Container } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export default async function StoreListPage() {
   const stores = await getStores({ filters: "category[contains]oripa", limit: 100 });
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
+    <Container>
       <H1>サイト評価一覧</H1>
       <p className="mt-3 text-sm text-ink/70">
         オリパ運営会社・プラットフォーム単位の評価記事です。
@@ -33,6 +34,6 @@ export default async function StoreListPage() {
           ))}
         </ul>
       )}
-    </div>
+    </Container>
   );
 }

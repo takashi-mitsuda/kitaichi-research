@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { getItemBySlug } from "@/lib/items";
+import { Container } from "@/components/ui/Container";
 import { H1 } from "@/components/ui/Heading";
 
 export const revalidate = 3600;
@@ -24,24 +25,30 @@ export default async function ItemPage(props: PageProps<"/oripa/item/[slug]">) {
 
   if (!item) notFound();
 
-  const rows: Array<[string, string]> = [
+  const detailRows: Array<[string, string]> = [
     ["参加価格", `${item.price.toLocaleString()}円`],
     ["表示価格ベース当選価値", `${item.face_value.toLocaleString()}円`],
     ["換金ベース当選価値", `${item.cash_value.toLocaleString()}円`],
     ["期待値（換金ベース）", `${item.expected_value.toLocaleString()}円`],
-    ["還元率（換金ベース）", `${item.return_rate.toFixed(1)}%`],
     ["最終検証日", item.verified_at],
   ];
 
   return (
-    <article className="mx-auto max-w-2xl px-6 py-16">
+    <Container as="article">
       <H1>{item.item_name}</H1>
-      <p className="mt-2 text-sm text-ink/60">期待値・還元率は換金ベースで算出しています。詳細は<Link href="/policy">データ検証ポリシー</Link>参照。</p>
+      <p className="mt-2 text-sm text-ink/50">期待値・還元率は換金ベースで算出しています。詳細は<Link href="/policy">データ検証ポリシー</Link>参照。</p>
+
+      <div className="mt-8 border border-ink/10 p-6">
+        <p className="text-sm text-ink/50">還元率（換金ベース）</p>
+        <p className="mt-1 text-[clamp(2.5rem,10vw,4rem)] font-bold leading-none text-vermillion">
+          {item.return_rate.toFixed(1)}%
+        </p>
+      </div>
 
       <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
-        {rows.map(([label, value]) => (
+        {detailRows.map(([label, value]) => (
           <div key={label} className="flex justify-between py-3">
-            <dt className="text-ink/60">{label}</dt>
+            <dt className="text-ink/50">{label}</dt>
             <dd className="font-bold">{value}</dd>
           </div>
         ))}
@@ -55,6 +62,6 @@ export default async function ItemPage(props: PageProps<"/oripa/item/[slug]">) {
           </a>
         </p>
       )}
-    </article>
+    </Container>
   );
 }

@@ -76,7 +76,7 @@ export default async function Home() {
             {topRanking.map((item, index) => (
               <li key={item.id} className="flex items-center justify-between py-3">
                 <span className="flex items-center gap-3">
-                  <span className="w-6 text-ink/40">{index + 1}</span>
+                  <span className="w-6 text-ink/50">{index + 1}</span>
                   <Link href={`/oripa/item/${item.slug}`}>{item.item_name}</Link>
                 </span>
                 <span className="font-bold text-vermillion">{item.return_rate.toFixed(1)}%</span>
@@ -88,7 +88,7 @@ export default async function Home() {
 
       <section className="mt-24 max-w-2xl sm:mt-32">
         <H2>なぜ期待値研究所か</H2>
-        <div className="mt-6 space-y-4 leading-relaxed text-ink/80">
+        <div className="mt-6 space-y-4 leading-relaxed text-ink/70">
           <p>
             多くのオリパ比較サイトは、運営側が提示する表示価格をそのまま還元率の計算に使っています。当研究所では、実際に買取・換金した場合の価値（換金ベース）を基準に算出し、損な商品も正直に「損」と書きます。
           </p>
@@ -147,11 +147,11 @@ export default async function Home() {
       <section className="mt-8 grid gap-4 border-t border-ink/10 pb-24 pt-8 sm:grid-cols-2 sm:pb-32">
         <Link href="/about" className="border border-ink/10 p-6">
           <p className="font-bold">研究所について</p>
-          <p className="mt-2 text-sm text-ink/60">運営体制・検証への取り組み方</p>
+          <p className="mt-2 text-sm text-ink/50">運営体制・検証への取り組み方</p>
         </Link>
         <Link href="/policy" className="border border-ink/10 p-6">
           <p className="font-bold">免責事項・データ検証ポリシー</p>
-          <p className="mt-2 text-sm text-ink/60">数値の算出方法・データの取得元</p>
+          <p className="mt-2 text-sm text-ink/50">数値の算出方法・データの取得元</p>
         </Link>
       </section>
     </div>

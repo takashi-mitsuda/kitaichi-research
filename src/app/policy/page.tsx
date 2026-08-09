@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Container } from "@/components/ui/Container";
+import { H1 } from "@/components/ui/Heading";
 
 export const metadata: Metadata = {
   title: "免責事項・データ検証ポリシー",
@@ -7,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function PolicyPage() {
   return (
-    <div className="mx-auto max-w-2xl px-6 py-16">
-      <h1 className="text-2xl font-bold">免責事項・データ検証ポリシー</h1>
+    <Container>
+      <H1>免責事項・データ検証ポリシー</H1>
 
       <section className="mt-10 space-y-4 leading-relaxed">
         <h2 className="text-lg font-bold">掲載データについて</h2>
@@ -60,11 +62,11 @@ export default function PolicyPage() {
         <p>当サイトに掲載する文章・データ・画像の無断転載・複製を禁じます。引用の際は出典元として当サイトのURLを明記してください。</p>
       </section>
 
-      <p className="mt-10 text-sm text-ink/60">
+      <p className="mt-10 text-sm text-ink/50">
         制定日：2026年7月15日
         <br />
         最終更新日：2026年7月15日
       </p>
-    </div>
+    </Container>
   );
 }

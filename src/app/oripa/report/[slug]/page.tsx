@@ -25,7 +25,7 @@ export default async function ReportPage(props: PageProps<"/oripa/report/[slug]"
   return (
     <Container as="article">
       <H1>{report.title}</H1>
-      <div className="prose prose-neutral mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: report.body }} />
+      <div className="prose mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: report.body }} />
     </Container>
   );
 }

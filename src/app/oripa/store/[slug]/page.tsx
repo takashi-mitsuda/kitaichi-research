@@ -26,7 +26,7 @@ export default async function StorePage(props: PageProps<"/oripa/store/[slug]">)
   return (
     <Container as="article">
       <H1>{store.name}</H1>
-      <div className="prose prose-neutral mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: store.review }} />
+      <div className="prose mt-8 max-w-none" dangerouslySetInnerHTML={{ __html: store.review }} />
       {/* 本文中にX(Twitter)の当選報告埋め込み(blockquote)があればレンダリングする */}
       <Script src="https://platform.twitter.com/widgets.js" strategy="lazyOnload" />
     </Container>

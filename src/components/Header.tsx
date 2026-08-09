@@ -21,13 +21,19 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper/75 backdrop-blur-md backdrop-saturate-150">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3 md:py-4">
         <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+          {/* モバイル:横組みロゴを縮小すると文字が読めなくなるため、アイコン+ライブテキストで組む */}
+          <span className="flex items-center gap-2 md:hidden">
+            <Image src="/logo-mark.png" alt="" width={32} height={32} priority className="h-8 w-8 rounded-lg" />
+            <span className="text-base font-bold text-ink">{siteName}</span>
+          </span>
+          {/* デスクトップ:ロゴ画像そのまま */}
           <Image
             src="/logo-horizontal.png"
             alt={siteName}
             width={220}
             height={56}
             priority
-            className="h-8 w-auto md:h-12"
+            className="hidden h-12 w-auto md:block"
           />
         </Link>
 

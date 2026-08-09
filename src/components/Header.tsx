@@ -20,21 +20,17 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-ink/10 bg-paper/75 backdrop-blur-md backdrop-saturate-150">
       <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-3 md:py-4">
-        <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          {/* モバイル:横組みロゴを縮小すると文字が読めなくなるため、アイコン+ライブテキストで組む */}
-          <span className="flex items-center gap-2 md:hidden">
-            <Image src="/logo-mark.png" alt="" width={32} height={32} priority className="h-8 w-8 rounded-lg" />
-            <span className="text-base font-bold text-ink">{siteName}</span>
-          </span>
-          {/* デスクトップ:ロゴ画像そのまま */}
+        {/* 横組みロゴ画像は縮小すると文字が読めなくなるため、PC/モバイル共通でアイコン+ライブテキストの組み方にする */}
+        <Link href="/" className="flex items-center gap-2 md:gap-3" onClick={() => setOpen(false)}>
           <Image
-            src="/logo-horizontal.png"
-            alt={siteName}
-            width={220}
-            height={56}
+            src="/logo-mark.png"
+            alt=""
+            width={48}
+            height={48}
             priority
-            className="hidden h-12 w-auto md:block"
+            className="h-8 w-8 rounded-lg md:h-11 md:w-11"
           />
+          <span className="text-base font-bold text-ink md:text-xl">{siteName}</span>
         </Link>
 
         {/* デスクトップ用ナビ(md以上で表示) */}

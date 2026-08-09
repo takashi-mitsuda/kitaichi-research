@@ -5,6 +5,10 @@
   --color-ink: #17181c;
   --color-vermillion: #c2371f;
   --color-terracotta: #a85a4a;
+  /* サイトはライトモード専用(ダークモード未対応)。明示しないと一部モバイルブラウザの
+     強制ダークモードが配色を自動調整し、bg-ink+text-paperのボタン等が意図しない
+     配色になることがあるため、ここでライト固定であることを宣言する。 */
+  color-scheme: light;
 }
 
 @theme inline {

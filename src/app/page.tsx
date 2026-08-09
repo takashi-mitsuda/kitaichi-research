@@ -69,7 +69,7 @@ export default async function Home() {
 
       <div className="mx-auto max-w-4xl px-6">
         <section className="mt-24 sm:mt-32">
-          <div className="flex items-baseline justify-between">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <H2>換金ベース還元率ランキング TOP10</H2>
             <Link href="/oripa/ranking" className="text-sm">
               すべて見る →
@@ -110,7 +110,7 @@ export default async function Home() {
         </section>
 
         <section className="mt-24 sm:mt-32">
-          <div className="flex items-baseline justify-between">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
             <H2>サイト評価</H2>
             <Link href="/oripa/store" className="text-sm">
               すべて見る →

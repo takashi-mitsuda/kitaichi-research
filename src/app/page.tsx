@@ -104,8 +104,8 @@ export default async function Home() {
             <p>すべての数値に計算式とデータの取得元・最終検証日を添え、根拠を示さない断定はしません。</p>
           </Panel>
           {pillarReport ? (
-            <Link href={`/oripa/report/${pillarReport.slug}`} className="mt-4 inline-block font-bold">
-              {pillarReport.title} →
+            <Link href={`/oripa/report/${pillarReport.slug}`} className="mt-4 block text-right text-sm">
+              すべて見る →
             </Link>
           ) : (
             <p className="mt-4 text-sm text-ink/50">計算方法の解説記事は準備中です。</p>

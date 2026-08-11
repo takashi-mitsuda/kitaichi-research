@@ -40,28 +40,12 @@ export default async function Home() {
               className="animate-fade-up mt-6 leading-relaxed text-ink/70"
               style={{ animationDelay: "0.16s" }}
             >
-              オリパ・カードBOX・ふるさと納税・くじ・競馬など、「得する確率」が関わる選択を、数字で検証するリサーチメディアです。
+              オリパの「得する確率」を、数字で検証するリサーチメディアです。
               表示価格ではなく、実際に買取・換金した場合の価値（換金ベース）を基準に期待値・還元率を算出しています。
             </p>
 
-            <div className="animate-fade-up" style={{ animationDelay: "0.24s" }}>
-              {topItem ? (
-                <p className="mt-8 border-y border-ink/10 py-4 text-sm">
-                  現在の最高還元率：
-                  <Link href={`/oripa/item/${topItem.slug}`} className="font-bold text-vermillion">
-                    {topItem.item_name} {topItem.return_rate.toFixed(1)}%
-                  </Link>
-                  （換金ベース）
-                </p>
-              ) : (
-                <p className="mt-8 border-y border-ink/10 py-4 text-sm text-ink/50">
-                  データ準備中です（Supabase接続後、検証済みの還元率がここに表示されます）。
-                </p>
-              )}
-            </div>
-
-            <div className="animate-fade-up mt-8" style={{ animationDelay: "0.32s" }}>
-              <Button href="/oripa">オリパ研究部門を見る</Button>
+            <div className="animate-fade-up mt-8" style={{ animationDelay: "0.24s" }}>
+              <Button href="/oripa">オリパ記事一覧へ</Button>
             </div>
           </div>
         </div>

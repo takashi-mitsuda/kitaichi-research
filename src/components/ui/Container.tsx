@@ -16,5 +16,6 @@ export function Container({
   className?: string;
   children: ReactNode;
 }) {
-  return <Tag className={`mx-auto ${sizeClass[size]} px-6 py-16 ${className}`}>{children}</Tag>;
+  // ヘッダーがfixedのため、ここでヘッダー高さ分の余白を確保する(トップページのヒーローは自前のpaddingで確保済みのため対象外)
+  return <Tag className={`mx-auto ${sizeClass[size]} px-6 pb-16 pt-28 md:pt-32 ${className}`}>{children}</Tag>;
 }

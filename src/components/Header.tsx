@@ -7,7 +7,7 @@ import Link from "next/link";
 const siteName = "期待値研究所";
 
 const navLinks = [
-  { href: "/oripa", label: "オリパ研究部門" },
+  { href: "/oripa", label: "オリパ記事一覧" },
   { href: "/oripa/ranking", label: "還元率ランキング" },
   { href: "/oripa/report", label: "解説記事" },
   { href: "/oripa/store", label: "サイト評価" },

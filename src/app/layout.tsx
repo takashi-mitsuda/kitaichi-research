@@ -45,42 +45,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <footer className="border-t border-ink/10 mt-16">
           <div className="mx-auto max-w-4xl px-6 py-8 text-sm text-ink/50">
-            <div className="grid gap-8 sm:grid-cols-2">
-              <div>
-                <p className="font-bold text-ink">サイトマップ</p>
-                <ul className="mt-3 space-y-2">
-                  <li>
-                    <Link href="/oripa">オリパ研究部門</Link>
-                  </li>
-                  <li>
-                    <Link href="/oripa/ranking">還元率ランキング</Link>
-                  </li>
-                  <li>
-                    <Link href="/oripa/report">解説記事</Link>
-                  </li>
-                  <li>
-                    <Link href="/oripa/store">サイト評価</Link>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-bold text-ink">ポリシー</p>
-                <ul className="mt-3 space-y-2">
-                  <li>
-                    <Link href="/about">研究所について</Link>
-                  </li>
-                  <li>
-                    <Link href="/policy">免責事項・データ検証ポリシー</Link>
-                  </li>
-                  <li>
-                    <Link href="/privacy">プライバシーポリシー</Link>
-                  </li>
-                  <li>
-                    <Link href="/contact">お問い合わせ</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            {/* サイトマップ列は削除(ハンバーガーメニュー等のナビと重複するため)。
+                ポリシー列は見出しのみ外し、ナビに無いリンク(Policy/Privacy/Contact)を残す */}
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about">研究所について</Link>
+              </li>
+              <li>
+                <Link href="/policy">免責事項・データ検証ポリシー</Link>
+              </li>
+              <li>
+                <Link href="/privacy">プライバシーポリシー</Link>
+              </li>
+              <li>
+                <Link href="/contact">お問い合わせ</Link>
+              </li>
+            </ul>
             <p className="mt-8">&copy; {new Date().getFullYear()} 期待値研究所</p>
           </div>
         </footer>

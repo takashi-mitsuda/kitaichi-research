@@ -16,6 +16,15 @@ export type Item = {
   source_url: string | null;
   verified_at: string;
   linked_content_id: string | null;
+  // カード型リンクのサムネイル用(0002_items_add_thumbnail.sqlで追加、未設定ならnull)
+  thumbnail_url?: string | null;
+};
+
+// microCMSの画像フィールドの標準的なレスポンス形状
+export type MicroCmsImage = {
+  url: string;
+  width: number;
+  height: number;
 };
 
 // microCMSの report / store コンテンツ共通フィールド
@@ -33,6 +42,8 @@ export type Report = MicroCmsContent & {
   body: string;
   // microCMSのセレクトフィールドは複数選択形式のため配列で返る
   category: KitaichiCategory[];
+  // サムネイル画像フィールド(未設定の記事も多いためoptional)
+  thumbnail?: MicroCmsImage;
 };
 
 export type Store = MicroCmsContent & {
@@ -41,4 +52,6 @@ export type Store = MicroCmsContent & {
   review: string;
   // microCMSのセレクトフィールドは複数選択形式のため配列で返る
   category: KitaichiCategory[];
+  // サムネイル画像フィールド(未設定の記事も多いためoptional)
+  thumbnail?: MicroCmsImage;
 };

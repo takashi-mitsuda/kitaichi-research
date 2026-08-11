@@ -47,7 +47,7 @@ export default async function Home() {
             </p>
 
             <div className="animate-fade-up mt-8" style={{ animationDelay: "0.24s" }}>
-              <p className="mb-3 font-bold">どこの会社が一番お得なの？</p>
+              <p className="mb-3 italic text-ink/60">どこの会社が一番お得なの？</p>
               {/* 運営会社ランキング記事(26-draft-report-store-ranking.md)は未公開のため、
                   代わりに現状最も近いオリパ会社比較(サイトごとの評価)一覧にリンクしている。公開後は差し替える */}
               <Button href="/oripa/store">オリパ会社の比較を見る</Button>

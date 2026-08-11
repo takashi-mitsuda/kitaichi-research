@@ -45,15 +45,17 @@ export default async function Home() {
             </p>
 
             <div className="animate-fade-up mt-8" style={{ animationDelay: "0.24s" }}>
-              <Button href="/oripa">オリパ記事一覧へ</Button>
+              {/* 運営会社ランキング記事(26-draft-report-store-ranking.md)は未公開のため、
+                  代わりに現状最も近いサイト評価一覧にリンクしている。公開後は差し替える */}
+              <Button href="/oripa/store">サイト評価を見る</Button>
             </div>
           </div>
         </div>
       </section>
 
       <div className="mx-auto max-w-4xl px-6">
-        <section className="mt-24 sm:mt-32">
-          <H2>換金ベース還元率ランキング TOP10</H2>
+        <section className="mt-16 sm:mt-20">
+          <H2>還元率・期待値が高いオリパの記事</H2>
           {topRanking.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
           ) : (
@@ -76,11 +78,19 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="mt-24 max-w-2xl sm:mt-32">
-          <H2>なぜ期待値研究所か</H2>
+        <section className="mt-16 max-w-2xl sm:mt-20">
+          <H2>期待値研究所とは</H2>
           <div className="mt-6 space-y-4 leading-relaxed text-ink/70">
             <p>
-              多くのオリパ比較サイトは、運営側が提示する表示価格をそのまま還元率の計算に使っています。当研究所では、実際に買取・換金した場合の価値（換金ベース）を基準に算出し、損な商品も正直に「損」と書きます。
+              多くの他オリパ比較サイトでは、運営の比較や当選報告の口コミ掲載など、定量的に比較することが難しいことに課題があると思います。
+            </p>
+            <p>
+              当サイトでは、買取・換金した場合の金額を基準にオリパの期待値を算出し、同じ基準で「どこのサイトが得なのか？」をわかりやすくすることを目指しています。
+            </p>
+            <p>
+              また、損なオリパも正直に「損」と書くようにしています。
+              <br />
+              どこかのサイトを有利に記載することもしません。
             </p>
             <p>すべての数値に計算式とデータの取得元・最終検証日を添え、根拠を示さない断定はしません。</p>
           </div>
@@ -93,7 +103,7 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="mt-24 sm:mt-32">
+        <section className="mt-16 sm:mt-20">
           <H2>サイト評価</H2>
           {stores.contents.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">評価記事準備中です（microCMS接続後に表示されます）。</p>
@@ -113,7 +123,7 @@ export default async function Home() {
           )}
         </section>
 
-        <section className="mt-24 sm:mt-32">
+        <section className="mt-16 sm:mt-20">
           <H2>個別ガチャEV 新着</H2>
           {recentItems.length === 0 ? (
             <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
@@ -130,11 +140,11 @@ export default async function Home() {
           )}
         </section>
 
-        <p className="mt-24 text-sm text-ink/50 sm:mt-32">
+        <p className="mt-16 text-sm text-ink/50 sm:mt-20">
           オリパ研究部門を皮切りに、カードBOX・ふるさと納税・くじ・競馬など他ジャンルへの展開も準備中です。
         </p>
 
-        <section className="mt-8 grid gap-4 border-t border-ink/10 pb-24 pt-8 sm:grid-cols-2 sm:pb-32">
+        <section className="mt-8 grid gap-4 border-t border-ink/10 pb-16 pt-8 sm:grid-cols-2 sm:pb-20">
           <Link href="/about" className="border border-ink/10 p-6">
             <p className="font-bold">研究所について</p>
             <p className="mt-2 text-sm text-ink/50">運営体制・検証への取り組み方</p>

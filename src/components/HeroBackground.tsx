@@ -49,13 +49,17 @@ export function HeroBackground({ targetRate }: { targetRate?: number }) {
 
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      <div className="hero-ink-blob hero-ink-blob-1" />
-      <div className="hero-ink-blob hero-ink-blob-2" />
-      {targetRate ? (
-        <div ref={statRef} className="hero-giant-stat">
-          0.0%
-        </div>
-      ) : null}
+      {/* 背景要素は画面幅いっぱいではなく、max-w-6xlの範囲内に収めて配置する。
+          セクション自体はフルブリードのままだが、超ワイドな画面で右端に偏りすぎないようにするため */}
+      <div className="relative mx-auto h-full max-w-6xl">
+        <div className="hero-ink-blob hero-ink-blob-1" />
+        <div className="hero-ink-blob hero-ink-blob-2" />
+        {targetRate ? (
+          <div ref={statRef} className="hero-giant-stat">
+            0.0%
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

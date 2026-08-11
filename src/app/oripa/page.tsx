@@ -25,7 +25,7 @@ export default async function OripaTopPage() {
       <p className="mt-3 text-ink/70">オリパの期待値を見るならここ。換金ベースの還元率で、数字だけを見て選べます。</p>
 
       <section className="mt-16">
-        <H2>換金ベース還元率ランキング TOP10</H2>
+        <H2>還元率・期待値が高いオリパの記事</H2>
         {topRanking.length === 0 ? (
           <p className="mt-4 text-sm text-ink/50">データ準備中です（Supabase接続後に表示されます）。</p>
         ) : (

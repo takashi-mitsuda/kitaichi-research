@@ -24,7 +24,10 @@ export default async function Home() {
   return (
     <div>
       {/* ヒーローのみmax-w-4xlの外側に出し、背景を画面幅いっぱいに広げる。テキストは内側のmx-auto max-w-4xlで他セクションと同じ位置に揃える */}
-      <section className="relative overflow-hidden py-24 sm:py-32">
+      {/* pt-24/32はヘッダー分の余白+ページ内で最も広い区切りとして残すが、pbは付けない。
+          ヒーロー下の余白は次のセクションのmt-16 sm:mt-20だけで作り、他セクション間と同じ間隔に揃える
+          (pyで上下対称だと、ヒーローのpb+次セクションのmtが足し算され、ヒーロー上より広くなってしまうため) */}
+      <section className="relative overflow-hidden pt-24 sm:pt-32">
         <HeroBackground targetRate={topItem?.return_rate} />
         <div className="relative z-10 mx-auto max-w-4xl px-6">
           <div className="max-w-2xl">
